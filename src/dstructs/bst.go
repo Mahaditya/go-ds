@@ -16,6 +16,10 @@ type BinarySearchTree[K constraints.Ordered, T any] struct {
 	size uint64
 }
 
+func (bst *BinarySearchTree[K, T]) Create(key K, val T) *BinarySearchTree[K, T] {
+	return bst.Insert(key,val)
+}
+
 func (bst *BinarySearchTree[K, T]) Insert(key K, val T) *BinarySearchTree[K, T] {
 	if bst.root == nil {
 		bst.root = &binarySearchTreeNode[K, T]{nil, nil, key, val}
