@@ -1,6 +1,8 @@
-package dstructs
+package bst
 
 import (
+	"fmt"
+	"go-ds/src/dstructs/queue"
 	"golang.org/x/exp/constraints"
 )
 
@@ -98,4 +100,37 @@ func (bst *BinarySearchTree[K, T]) InOrderValues() []T {
 		inOrderValuesContainer = append(inOrderValuesContainer, node.value)
 	}
 	return inOrderValuesContainer
+}
+
+func (bst *BinarySearchTree[K, T]) levelOrderTraversal() [][]*binarySearchTreeNode[K,T] {
+	levelOrder:= make([][]*binarySearchTreeNode[K,T],0)
+	q:= new(queue.Queue[*binarySearchTreeNode[K,T]])
+	q.Push(bst.root)
+	for q.NotEmpty(){
+		thisLevel:= make([]*binarySearchTreeNode[K,T],0)
+		for n:= q.Size();n>0;n-- {
+			node,_ := q.Front()
+			q.Pop()
+			thisLevel=append(thisLevel, node)
+			if node.left!=nil {
+				q.Push(node.left)
+			}
+			if node.right!=nil{
+				q.Push(node.right)
+			}
+		}
+		levelOrder=append(levelOrder, thisLevel)
+	}
+	return levelOrder
+}
+
+
+func (bst *BinarySearchTree[K, T]) Print() {
+	levelOrder:= bst.levelOrderTraversal()
+	for _,level := range levelOrder{
+		for _,node:= range level{
+			fmt.Print(node.key," ")
+		}
+		fmt.Println()
+	}
 }

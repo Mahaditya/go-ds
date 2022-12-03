@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
-	"go-ds/src/dstructs"
+	"go-ds/src/dstructs/bst"
+	"math/rand"
 )
 
 func main(){
-	bst:= new(dstructs.BinarySearchTree[int,string]).Create(1,"B")
-	bst.Insert(1,"a").Insert(5,"b").Insert(2,"c")
+	bst:= new(bst.BinarySearchTree[int,int])
+	for i:=0;i<1000;i++{
+		bst.Insert(rand.Intn(1000),rand.Intn(1000))
+	}
 	fmt.Println(bst.Search(2))
-	fmt.Println(bst.InOrderKeys())
+	bst.Print()
 }
