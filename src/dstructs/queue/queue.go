@@ -1,42 +1,40 @@
 package queue
 
 import (
-	"errors"
 	"fmt"
+	"go-ds/src/dstructs/vector"
 )
 
 type Queue[T any] struct{
-	data []T
+	data vector.Vector[T]
 }
 
 func (q *Queue[T]) Size() int{
-	return len(q.data)
+	return q.data.Size()
 }
 
-func (q *Queue[T]) Push(data T){
-	q.data = append(q.data,data)
+func (q *Queue[T]) Push(element T) *Queue[T]{
+	q.data.Push(element)
+	return q
 }
 
 func (q *Queue[T]) Front() (T,error){
-	if(q.Size()>0){
-		return q.data[0],nil
-	}
-	return *new(T),errors.New("queue is empty") 
+	return q.data.First()
 }
 
 func (q *Queue[T]) Pop() (T,error){
-	if(q.Size()>0){
-		front,_ := q.Front()
-		q.data=q.data[1:]
-		return front,nil
-	}
-	return *new(T),errors.New("popping an empty queue")
+	return q.data.PopFront()
 }
 
-func (q *Queue[T]) NotEmpty() bool {
-	return q.Size()>0
+func (q *Queue[T]) IsEmpty() bool {
+	return q.data.IsEmpty()
+}
+
+func (q *Queue[T]) IsNotEmpty() bool {
+	return q.data.IsNotEmpty()
 }
 
 func (q *Queue[T]) Print()  {
-	fmt.Println("->",q.data)
+	fmt.Print("->")
+	q.data.Print()
 }

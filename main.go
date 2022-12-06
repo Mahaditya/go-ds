@@ -1,17 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"go-ds/src/dstructs/bst"
-	"math/rand"
+	"go-ds/src/dstructs/queue"
 )
 
 func main(){
-	bst:= new(bst.BinarySearchTree[int,int])
-	for i:=0;i<1000;i++{
-		bst.Insert(rand.Intn(1000),rand.Intn(1000))
+	q:= new(queue.Queue[int])
+	q.Push(1).Push(2).Push(3)
+	
+	for q.IsNotEmpty(){
+		q.Print()
+		q.Pop()
 	}
-	fmt.Println(bst.Search(456)) 
-	fmt.Println(bst.Search(2))
-	bst.Print()
 }
