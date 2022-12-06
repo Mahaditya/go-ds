@@ -24,12 +24,13 @@ func (q *Queue[T]) Front() (T,error){
 	return *new(T),errors.New("queue is empty") 
 }
 
-func (q *Queue[T]) Pop() (error){
+func (q *Queue[T]) Pop() (T,error){
 	if(q.Size()>0){
+		front,_ := q.Front()
 		q.data=q.data[1:]
-		return nil
+		return front,nil
 	}
-	return errors.New("popping an empty queue")
+	return *new(T),errors.New("popping an empty queue")
 }
 
 func (q *Queue[T]) NotEmpty() bool {
