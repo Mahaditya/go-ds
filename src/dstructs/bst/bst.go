@@ -42,8 +42,7 @@ func (bst *BinarySearchTree[K, T]) levelOrderTraversal() [][]*bstNode[K,T] {
 	for q.NotEmpty(){
 		thisLevel:= make([]*bstNode[K,T],0)
 		for n:= q.Size();n>0;n-- {
-			node,_ := q.Front()
-			q.Pop()
+			node,_ := q.Pop()
 			thisLevel=append(thisLevel, node)
 			if node.left!=nil {
 				q.Push(node.left)
