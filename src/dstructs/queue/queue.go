@@ -1,6 +1,9 @@
 package queue
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type Queue[T any] struct{
 	data []T
@@ -31,4 +34,8 @@ func (q *Queue[T]) Pop() (error){
 
 func (q *Queue[T]) NotEmpty() bool {
 	return q.Size()>0
+}
+
+func (q *Queue[T]) Print()  {
+	fmt.Println("->",q.data)
 }
