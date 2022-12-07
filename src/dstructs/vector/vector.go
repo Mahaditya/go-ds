@@ -9,6 +9,12 @@ type Vector[T any] struct {
 	data []T
 }
 
+func Make[T any](slice []T) Vector[T]{
+	v:= new(Vector[T])
+	v.data = slice
+	return *v
+}
+
 func (v *Vector[T]) Size() int {
 	return len(v.data)
 }
@@ -26,19 +32,8 @@ func (v *Vector[T]) IsNotEmpty() bool {
 	return !v.IsEmpty()
 }
 
-func (v *Vector[T]) at(index int) (T, error) {
-	if index < 0 || index >= v.Size() {
-		return *new(T), errors.New("index out of bounds")
-	}
-	return v.data[index], nil
-}
-
-func (v *Vector[T]) last() (T, error) {
-	return v.at(v.Size() - 1)
-}
-
 func (v *Vector[T]) Pop() (T, error) {
-	val, err := v.last()
+	val, err := v.Last()
 	if err == nil {
 		v.data = v.data[:v.Size()-1]
 	}
