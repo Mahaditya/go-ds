@@ -66,3 +66,12 @@ func (v *Vector[T]) PopFront() (T, error) {
 func (v *Vector[T]) Print() {
 	fmt.Println(v.data)
 }
+
+
+func Map[A,B any](vector Vector[A],f func (A)B) Vector[B] {
+	newVector:= new(Vector[B])
+	for _,val:=range vector.data{
+		newVector.Push(f(val))
+	}
+	return *newVector
+}
