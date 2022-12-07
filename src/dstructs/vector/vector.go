@@ -75,3 +75,27 @@ func Map[A,B any](vector Vector[A],f func (A)B) Vector[B] {
 	}
 	return *newVector
 }
+
+func (v *Vector[T]) Replace(index int, element T) (*Vector[T],error){
+	_,err:=v.At(index)
+	if err==nil{
+		v.data[index] = element
+	}
+	return v,err
+}
+
+func (v *Vector[T]) SubVector(startIndex int, endIndex int) (Vector[T],error){
+	_,err:=v.At(startIndex)
+	_,err2:=v.At(endIndex)
+
+	if err==nil && err2==nil{
+		return Make(v.data[startIndex:endIndex]),nil
+	}
+
+	if err!=nil{
+		return *new(Vector[T]),err
+	}
+	
+	return *new(Vector[T]),err2
+
+}
