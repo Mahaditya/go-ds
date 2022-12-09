@@ -1,6 +1,9 @@
 package stack
 
-import "go-ds/src/dstructs/vector"
+import (
+	"fmt"
+	"go-ds/src/dstructs/vector"
+)
 
 type Stack[T any] struct {
 	data vector.Vector[T]
@@ -27,4 +30,8 @@ func (st *Stack[T]) IsEmpty() bool {
 }
 func (st *Stack[T]) IsNotEmpty() bool {
 	return !st.IsEmpty()
+}
+
+func (st Stack[T]) String() string {
+	return fmt.Sprintf("Stack %s<---",st.data.ToString())
 }

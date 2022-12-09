@@ -34,7 +34,6 @@ func (q *Queue[T]) IsNotEmpty() bool {
 	return q.data.IsNotEmpty()
 }
 
-func (q *Queue[T]) Print()  {
-	fmt.Print("->")
-	q.data.Print()
+func (q Queue[T]) String() string {
+	return fmt.Sprintf("Queue --->%s",q.data.ToString())
 }
