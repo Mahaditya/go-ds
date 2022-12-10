@@ -2,14 +2,18 @@ package main
 
 import (
 	"fmt"
-	"go-ds/src/dstructs/stack"
+	"go-ds/src/dstructs/sll"
 )
 
 func main() {
-	var st stack.Stack[int]
-	if a,err:= st.Pop();err!=nil{
-		fmt.Println(a)
-	}else{
-		fmt.Println(a)
-	}
+	var linkedList sll.SinglyLinkedList[int]
+	linkedList.AddLast(9) 
+	linkedList.AddFirst(1)
+	linkedList.AddFirst(2)
+	linkedList.AddFirst(6)
+	linkedList.AddLast(8)
+	head:= linkedList.GetHead()
+	linkedList.AddAfter(19,head)
+	fmt.Println(linkedList)
+	fmt.Println(linkedList.GetHead(),linkedList.GetTail())
 }
