@@ -1,6 +1,9 @@
 package sll
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type SinglyLinkedList[T any] struct {
 	head *lLNode[T]
@@ -24,11 +27,11 @@ func (sl *SinglyLinkedList[T]) AddLast(element T) {
 	sl.addAfter(element, sl.tail)
 }
 
-func (sl *SinglyLinkedList[T]) AddAfter(element T, node *lLNode[T]) error {
+func (sl *SinglyLinkedList[T]) AddAfter(node *lLNode[T], element T) error {
 	return sl.addAfter(element, node)
 }
 
-func (sl *SinglyLinkedList[T]) AddBefore(element T, node *lLNode[T]) error {
+func (sl *SinglyLinkedList[T]) AddBefore(node *lLNode[T], element T) error {
 	return sl.addBefore(element, node)
 }
 
@@ -38,6 +41,27 @@ func (sl *SinglyLinkedList[T]) ForEach(f func(node *lLNode[T])) {
 		f(currNode)
 		currNode = currNode.next
 	}
+}
+
+func (sl *SinglyLinkedList[T]) Remove(node *lLNode[T]) error {
+	prevNode := sl.getPrev(node)
+	if prevNode != nil {
+		prevNode.next = node.next
+		return nil
+	}
+	if node == sl.head {
+		sl.head = node.next
+		return nil
+	}
+	return errors.New("node not found")
+}
+
+func (sl *SinglyLinkedList[T]) Pop(node *lLNode[T]) error {
+	return sl.Remove(sl.GetTail())
+}
+
+func (sl *SinglyLinkedList[T]) PopFront(node *lLNode[T]) error {
+	return sl.Remove(sl.GetHead())
 }
 
 func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
