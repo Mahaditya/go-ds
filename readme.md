@@ -19,5 +19,5 @@ func main() {
 	fmt.Println(arr)
 }
 
+> Output: <Vector [alpha beta]>
 ```
-> <Vector [alpha beta]>  //out
