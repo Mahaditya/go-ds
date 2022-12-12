@@ -61,3 +61,31 @@ Stack [alpha beta]<---
 beta
 
 ```
+
+### Pair
+
+```go
+
+import (
+	"fmt"
+	"go-ds/src/dstructs/pair"
+	"go-ds/src/dstructs/stack"
+)
+
+func main() {
+	catPair:= pair.Make("Cat",4)
+	fmt.Println(catPair) //> {Cat 4}
+
+	birdPair:= pair.Make("Bird",2)
+	fmt.Println(birdPair) //> {Bird 2}
+
+	var myStack stack.Stack[pair.Pair[string,int]]
+	myStack.Push(catPair).Push(birdPair)
+	fmt.Println(myStack)  //> Stack [{Cat 4} {Bird 2}]<---
+
+	if topPair,err:= myStack.Top(); err==nil{
+		fmt.Println("TopPair",topPair) //> TopPair {Bird 2}
+	}
+}
+
+```
