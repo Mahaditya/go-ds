@@ -77,3 +77,7 @@ func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 		}
 	})
 }
+
+func (sl *SinglyLinkedList[T]) Size() uint64 {
+	return sl.size
+}
