@@ -2,13 +2,26 @@ package main
 
 import (
 	"fmt"
-	"go-ds/src/dstructs/dll"
+	"go-ds/src/dstructs/stack"
 )
 
 func main() {
-	linkedList:=dll.Make(9)
-	linkedList.AddLast(8)
-	linkedList.AddFirst(7)
-	linkedList.AddLast(1)
-	fmt.Println(linkedList)
+	var myStack stack.Stack[string]
+
+	myStack.Push("alpha")
+	myStack.Push("beta")
+	myStack.Push("gamma")
+
+	fmt.Println(myStack)
+
+	myStack.Pop()
+
+	fmt.Println(myStack)
+
+	if top,err:= myStack.Top(); err!=nil{
+		fmt.Println(err)
+	}else{
+		fmt.Println(top)
+	}
+	
 }
