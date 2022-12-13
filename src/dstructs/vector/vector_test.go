@@ -14,7 +14,8 @@ func TestSize(t *testing.T){
         t.Errorf("got %q, wanted %q", got, want)
     }
 
-    v.Push(1).Push(2)
+    v.Push(1)
+    v.Push(2)
 
     got= v.Size()
     want= 2
@@ -64,7 +65,8 @@ func TestAt(t *testing.T){
 
 
 
-    v.Push(1).Push(2)
+    v.Push(1)
+    v.Push(2)
 
     got,_:=v.At(0)
     want:= 1
@@ -84,7 +86,8 @@ func TestAt(t *testing.T){
 
 func TestPopFront(t *testing.T){
     v:=new(Vector[int])
-    v.Push(1).Push(2)
+    v.Push(1)
+    v.Push(2)
     got,_:=v.PopFront()
     want:= 1
     if got!=want{

@@ -19,9 +19,8 @@ func (v *Vector[T]) Size() int {
 	return len(v.data)
 }
 
-func (v *Vector[T]) Push(element T) *Vector[T] {
+func (v *Vector[T]) Push(element T) {
 	v.data = append(v.data, element)
-	return v
 }
 
 func (v *Vector[T]) IsEmpty() bool {

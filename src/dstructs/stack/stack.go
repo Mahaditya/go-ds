@@ -9,9 +9,8 @@ type Stack[T any] struct {
 	data vector.Vector[T]
 }
 
-func (st *Stack[T]) Push(element T) *Stack[T] {
+func (st *Stack[T]) Push(element T) {
 	st.data.Push(element)
-	return st
 }
 
 func (st *Stack[T]) Pop() (T, error) {

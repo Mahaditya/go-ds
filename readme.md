@@ -15,7 +15,8 @@ import (
 
 func main() {
 	var arr vector.Vector[string]
-	arr.Push("alpha").Push("beta")
+	arr.Push("alpha")
+	arr.Push("beta")
 	fmt.Println(arr)
 }
 
@@ -80,7 +81,8 @@ func main() {
 	fmt.Println(birdPair) //> {Bird 2}
 
 	var myStack stack.Stack[pair.Pair[string,int]]
-	myStack.Push(catPair).Push(birdPair)
+	myStack.Push(catPair)
+	myStack.Push(birdPair)
 	fmt.Println(myStack)  //> Stack [{Cat 4} {Bird 2}]<---
 
 	if topPair,err:= myStack.Top(); err==nil{

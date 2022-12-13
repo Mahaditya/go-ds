@@ -8,7 +8,7 @@ import (
 type SinglyLinkedList[T any] struct {
 	head *lLNode[T]
 	tail *lLNode[T]
-	size uint64
+	size int
 }
 
 func (sl *SinglyLinkedList[T]) GetHead() *lLNode[T] {
@@ -64,6 +64,37 @@ func (sl *SinglyLinkedList[T]) PopFront(node *lLNode[T]) error {
 	return sl.Remove(sl.GetHead())
 }
 
+func (sl *SinglyLinkedList[T]) Size() int {
+	return sl.size
+}
+
+func (sl *SinglyLinkedList[T]) At(idx int) (T,error) {
+	i:=0;
+	curr:=sl.head
+	for curr!=nil{
+		if(i==idx){
+			return curr.val,nil
+		}
+		i++
+		curr=curr.next
+	}
+	return *new(T),errors.New("index out of bounds")
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 	if sl.size == 0 {
 		fmt.Print("{empty}")
@@ -76,8 +107,4 @@ func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 			fmt.Print(node.val, "->nil")
 		}
 	})
-}
-
-func (sl *SinglyLinkedList[T]) Size() uint64 {
-	return sl.size
 }
