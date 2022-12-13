@@ -1,6 +1,9 @@
 package hashmap
 
-import "fmt"
+import (
+	"fmt"
+	"go-ds/src/dstructs/vector"
+)
 
 type HashMap[T comparable, U any] struct {
 	data map[T]U
@@ -51,6 +54,23 @@ func (hs *HashMap[T, U]) Update(key T,f func(U)U) *HashMap[T, U] {
 	return hs
 }
 
+func (hs *HashMap[T, U]) Keys(key T,f func(U)U) vector.Vector[T] {
+	var keys vector.Vector[T]
+	hs.ForEach(func(key T, value U) {
+		keys.Push(key)
+	})
+	return keys
+}
+
+func (hs *HashMap[T, U]) Values(key T,f func(U)U) vector.Vector[U] {
+	var values vector.Vector[U]
+	hs.ForEach(func(key T, value U) {
+		values.Push(value)
+	})
+	return values
+} 
+
 func (hs HashMap[T, U]) String() string {
 	return fmt.Sprintf("%v",hs.data)
 }
+
