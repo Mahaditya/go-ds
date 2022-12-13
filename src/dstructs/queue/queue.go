@@ -13,9 +13,8 @@ func (q *Queue[T]) Size() int{
 	return q.data.Size()
 }
 
-func (q *Queue[T]) Push(element T) *Queue[T]{
+func (q *Queue[T]) Push(element T){
 	q.data.Push(element)
-	return q
 }
 
 func (q *Queue[T]) Front() (T,error){

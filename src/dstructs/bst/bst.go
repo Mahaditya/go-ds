@@ -8,7 +8,7 @@ import (
 
 type BinarySearchTree[K constraints.Ordered, T any] struct {
 	root *bstNode[K, T]
-	size uint64
+	size int
 }
 
 func (bst *BinarySearchTree[K, T]) Create(key K, val T) *BinarySearchTree[K, T] {
@@ -43,7 +43,7 @@ func (bst *BinarySearchTree[K, T]) Search(searchKey K) (found bool, val T) {
 	return found, node.value
 }
 
-func (bst *BinarySearchTree[K, T]) Size() uint64 {
+func (bst *BinarySearchTree[K, T]) Size() int {
 	return bst.size
 }
 
