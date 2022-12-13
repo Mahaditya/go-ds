@@ -2,8 +2,8 @@ package bst
 
 import (
 	"fmt"
+	"go-ds/src/dstructs/pair"
 	"golang.org/x/exp/constraints"
-	
 )
 
 type BinarySearchTree[K constraints.Ordered, T any] struct {
@@ -65,6 +65,14 @@ func (bst *BinarySearchTree[K, T]) InOrderValues() []T {
 	return inOrderValuesContainer
 }
 
+func (bst *BinarySearchTree[K, T]) InOrder() []pair.Pair[K,T] {
+	var inOrderValuesContainer []pair.Pair[K,T]
+	inOrderNodes := bst.inOrder()
+	for _, node := range inOrderNodes {
+		inOrderValuesContainer = append(inOrderValuesContainer,pair.Make(node.key,node.value))
+	}
+	return inOrderValuesContainer
+}
 
 func (bst *BinarySearchTree[K, T]) Print() {
 	levelOrder:= bst.levelOrderTraversal()
