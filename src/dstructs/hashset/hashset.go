@@ -14,7 +14,7 @@ func (hs *HashSet[T]) Insert(element T) *HashSet[T] {
 	return hs
 }
 
-func (hs *HashSet[T]) Contains(element T) bool{
+func (hs *HashSet[T]) Contains(element T) bool {
 	return hs.mp.ContainsKey(element)
 }
 
@@ -30,10 +30,10 @@ func (hs *HashSet[T]) Size() int {
 	return hs.mp.Size()
 }
 
-func (hs HashSet[T]) Format(f fmt.State,verb rune){
+func (hs HashSet[T]) Format(f fmt.State, verb rune) {
 	fmt.Print("{ ")
 	hs.mp.ForEach(func(key T, value bool) {
-		fmt.Print(key," ")
+		fmt.Print(key, " ")
 	})
 	fmt.Print("}")
 }

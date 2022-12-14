@@ -4,103 +4,100 @@ import (
 	"testing"
 )
 
-func TestSize(t *testing.T){
-	v:=new(Vector[int])
-	
-    got := v.Size()
-    want := 0
+func TestSize(t *testing.T) {
+	v := new(Vector[int])
 
-    if got != want {
-        t.Errorf("got %q, wanted %q", got, want)
-    }
+	got := v.Size()
+	want := 0
 
-    v.Push(1)
-    v.Push(2)
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
 
-    got= v.Size()
-    want= 2
-    if got != want {
-        t.Errorf("got %q, wanted %q", got, want)
-    }
+	v.Push(1)
+	v.Push(2)
 
-    v.Pop()
+	got = v.Size()
+	want = 2
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
 
-    got=v.Size()
-    want=1
+	v.Pop()
 
-    if got != want {
-        t.Errorf("got %q, wanted %q", got, want)
-    }
+	got = v.Size()
+	want = 1
 
-    v.Pop()
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
 
-    got=v.Size()
-    want=0
+	v.Pop()
 
-    if got != want {
-        t.Errorf("got %q, wanted %q", got, want)
-    }
+	got = v.Size()
+	want = 0
 
-    _,err1:=v.Pop()
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
 
-    if err1==nil{
-        t.Error("should have thrown error")
-    }
+	_, err1 := v.Pop()
 
-    _,err2:=v.Pop()
+	if err1 == nil {
+		t.Error("should have thrown error")
+	}
 
-    if err2==nil{
-        t.Error("should have thrown error")
-    }
+	_, err2 := v.Pop()
 
-}
-
-func TestAt(t *testing.T){
-    v:=new(Vector[int])
-
-    _,err:=v.At(1)
-    if err==nil{
-        t.Error("should have thrown error")
-    }
-
-
-
-    v.Push(1)
-    v.Push(2)
-
-    got,_:=v.At(0)
-    want:= 1
-
-    if got!=want{
-        t.Errorf("got %q, wanted %q", got, want)
-    }
-
-    _,err=v.At(-1)
-
-    if err==nil{
-        t.Error("should have thrown error")
-    }
+	if err2 == nil {
+		t.Error("should have thrown error")
+	}
 
 }
 
+func TestAt(t *testing.T) {
+	v := new(Vector[int])
 
-func TestPopFront(t *testing.T){
-    v:=new(Vector[int])
-    v.Push(1)
-    v.Push(2)
-    got,_:=v.PopFront()
-    want:= 1
-    if got!=want{
-        t.Errorf("got %q, wanted %q", got, want)
-    }
-    got,_=v.PopFront()
-    want=2
-    if got!=want{
-        t.Errorf("got %q, wanted %q", got, want)
-    }
-    _,err:=v.PopFront()
+	_, err := v.At(1)
+	if err == nil {
+		t.Error("should have thrown error")
+	}
 
-    if err==nil{
-        t.Error("should have thrown error")
-    }
+	v.Push(1)
+	v.Push(2)
+
+	got, _ := v.At(0)
+	want := 1
+
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
+
+	_, err = v.At(-1)
+
+	if err == nil {
+		t.Error("should have thrown error")
+	}
+
+}
+
+func TestPopFront(t *testing.T) {
+	v := new(Vector[int])
+	v.Push(1)
+	v.Push(2)
+	got, _ := v.PopFront()
+	want := 1
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
+	got, _ = v.PopFront()
+	want = 2
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
+	}
+	_, err := v.PopFront()
+
+	if err == nil {
+		t.Error("should have thrown error")
+	}
 }

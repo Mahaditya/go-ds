@@ -9,8 +9,8 @@ type Vector[T any] struct {
 	data []T
 }
 
-func From[T any](slice []T) Vector[T]{
-	v:= new(Vector[T])
+func From[T any](slice []T) Vector[T] {
+	v := new(Vector[T])
 	v.data = slice
 	return *v
 }
@@ -62,42 +62,42 @@ func (v *Vector[T]) PopFront() (T, error) {
 	return val, err
 }
 
-func Map[A,B any](vector Vector[A],f func (A)B) Vector[B] {
-	newVector:= new(Vector[B])
-	for _,val:=range vector.data{
+func Map[A, B any](vector Vector[A], f func(A) B) Vector[B] {
+	newVector := new(Vector[B])
+	for _, val := range vector.data {
 		newVector.Push(f(val))
 	}
 	return *newVector
 }
 
-func (v *Vector[T]) Replace(index int, element T) (*Vector[T],error){
-	_,err:=v.At(index)
-	if err==nil{
+func (v *Vector[T]) Replace(index int, element T) (*Vector[T], error) {
+	_, err := v.At(index)
+	if err == nil {
 		v.data[index] = element
 	}
-	return v,err
+	return v, err
 }
 
-func (v Vector[T]) SubVector(startIndex int, endIndex int) (Vector[T],error){
-	_,err:=v.At(startIndex)
-	_,err2:=v.At(endIndex)
+func (v Vector[T]) SubVector(startIndex int, endIndex int) (Vector[T], error) {
+	_, err := v.At(startIndex)
+	_, err2 := v.At(endIndex)
 
-	if err==nil && err2==nil{
-		return From(v.data[startIndex:endIndex]),nil
+	if err == nil && err2 == nil {
+		return From(v.data[startIndex:endIndex]), nil
 	}
 
-	if err!=nil{
-		return *new(Vector[T]),err
+	if err != nil {
+		return *new(Vector[T]), err
 	}
-	
-	return *new(Vector[T]),err2
+
+	return *new(Vector[T]), err2
 
 }
 
-func (v Vector[T]) String() string{
-	return fmt.Sprintf("<Vector %v>",v.data)
+func (v Vector[T]) String() string {
+	return fmt.Sprintf("<Vector %v>", v.data)
 }
 
 func (v Vector[T]) ToString() string {
-	return fmt.Sprintf("%v",v.data)
+	return fmt.Sprintf("%v", v.data)
 }

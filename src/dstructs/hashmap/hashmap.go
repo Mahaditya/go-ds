@@ -49,12 +49,12 @@ func (hs *HashMap[T, U]) Replace(key T, value U) *HashMap[T, U] {
 	return hs
 }
 
-func (hs *HashMap[T, U]) Update(key T,f func(U)U) *HashMap[T, U] {
-	hs.Insert(key,f(hs.data[key]))
+func (hs *HashMap[T, U]) Update(key T, f func(U) U) *HashMap[T, U] {
+	hs.Insert(key, f(hs.data[key]))
 	return hs
 }
 
-func (hs *HashMap[T, U]) Keys(key T,f func(U)U) vector.Vector[T] {
+func (hs *HashMap[T, U]) Keys(key T, f func(U) U) vector.Vector[T] {
 	var keys vector.Vector[T]
 	hs.ForEach(func(key T, value U) {
 		keys.Push(key)
@@ -62,15 +62,14 @@ func (hs *HashMap[T, U]) Keys(key T,f func(U)U) vector.Vector[T] {
 	return keys
 }
 
-func (hs *HashMap[T, U]) Values(key T,f func(U)U) vector.Vector[U] {
+func (hs *HashMap[T, U]) Values(key T, f func(U) U) vector.Vector[U] {
 	var values vector.Vector[U]
 	hs.ForEach(func(key T, value U) {
 		values.Push(value)
 	})
 	return values
-} 
-
-func (hs HashMap[T, U]) String() string {
-	return fmt.Sprintf("%v",hs.data)
 }
 
+func (hs HashMap[T, U]) String() string {
+	return fmt.Sprintf("%v", hs.data)
+}

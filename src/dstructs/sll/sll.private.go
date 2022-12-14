@@ -66,7 +66,7 @@ func (sl *SinglyLinkedList[T]) getPrev(currNode *lLNode[T]) *lLNode[T] {
 func (sl *SinglyLinkedList[T]) addAfter(val T, node *lLNode[T]) error {
 	nextNode, err := getNext(node)
 	newNode := newLLNode(val, nextNode)
-	if err != nil{
+	if err != nil {
 		sl.head = newNode
 	}
 	setNext(node, newNode)
@@ -82,7 +82,7 @@ func (sl *SinglyLinkedList[T]) addBefore(val T, node *lLNode[T]) error {
 	if prevNode == nil {
 		newNode := newLLNode(val, node)
 		sl.head = newNode
-		if sl.tail==nil{
+		if sl.tail == nil {
 			sl.tail = sl.head
 		}
 		sl.incrementSize()

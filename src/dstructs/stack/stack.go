@@ -25,12 +25,12 @@ func (st *Stack[T]) Size() int {
 	return st.data.Size()
 }
 func (st *Stack[T]) IsEmpty() bool {
-	return st.data.Size()<=0
+	return st.data.Size() <= 0
 }
 func (st *Stack[T]) IsNotEmpty() bool {
 	return !st.IsEmpty()
 }
 
 func (st Stack[T]) String() string {
-	return fmt.Sprintf("Stack %s<---",st.data.ToString())
+	return fmt.Sprintf("Stack %s<---", st.data.ToString())
 }

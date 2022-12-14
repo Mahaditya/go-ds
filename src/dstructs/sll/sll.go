@@ -68,32 +68,18 @@ func (sl *SinglyLinkedList[T]) Size() int {
 	return sl.size
 }
 
-func (sl *SinglyLinkedList[T]) At(idx int) (T,error) {
-	i:=0;
-	curr:=sl.head
-	for curr!=nil{
-		if(i==idx){
-			return curr.val,nil
+func (sl *SinglyLinkedList[T]) At(idx int) (T, error) {
+	i := 0
+	curr := sl.head
+	for curr != nil {
+		if i == idx {
+			return curr.val, nil
 		}
 		i++
-		curr=curr.next
+		curr = curr.next
 	}
-	return *new(T),errors.New("index out of bounds")
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	return *new(T), errors.New("index out of bounds")
+}
 
 func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 	if sl.size == 0 {

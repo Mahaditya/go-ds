@@ -7,11 +7,11 @@ type Sizeable interface {
 }
 
 type Indexable[T any] interface {
-	At(int)(T,error)
+	At(int) (T, error)
 }
 
 type Popable[T any] interface {
-	Pop() (T,error)
+	Pop() (T, error)
 }
 
 type Pushable[T any] interface {
@@ -19,16 +19,16 @@ type Pushable[T any] interface {
 }
 
 type TopPeekable[T any] interface {
-	Top() (T,error)
+	Top() (T, error)
 }
 
 type FrontPeekable[T any] interface {
-	Front() (T,error)
+	Front() (T, error)
 }
 
 type EndAccessible[T any] interface {
-	First() (T,error)
-	Last() (T,error)
+	First() (T, error)
+	Last() (T, error)
 }
 
 type Searchable[T any] interface {
@@ -57,4 +57,3 @@ type Vector[T any] interface {
 	Searchable[T]
 	Sizeable
 }
-

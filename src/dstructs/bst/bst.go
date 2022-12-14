@@ -12,7 +12,7 @@ type BinarySearchTree[K constraints.Ordered, T any] struct {
 }
 
 func (bst *BinarySearchTree[K, T]) Create(key K, val T) *BinarySearchTree[K, T] {
-	return bst.Insert(key,val)
+	return bst.Insert(key, val)
 }
 
 func (bst *BinarySearchTree[K, T]) Insert(key K, val T) *BinarySearchTree[K, T] {
@@ -32,8 +32,6 @@ func (bst *BinarySearchTree[K, T]) Insert(key K, val T) *BinarySearchTree[K, T] 
 	}
 	return bst
 }
-
-
 
 func (bst *BinarySearchTree[K, T]) Search(searchKey K) (found bool, val T) {
 	found, node := bst.search(searchKey)
@@ -65,20 +63,20 @@ func (bst *BinarySearchTree[K, T]) InOrderValues() []T {
 	return inOrderValuesContainer
 }
 
-func (bst *BinarySearchTree[K, T]) InOrder() []pair.Pair[K,T] {
-	var inOrderValuesContainer []pair.Pair[K,T]
+func (bst *BinarySearchTree[K, T]) InOrder() []pair.Pair[K, T] {
+	var inOrderValuesContainer []pair.Pair[K, T]
 	inOrderNodes := bst.inOrder()
 	for _, node := range inOrderNodes {
-		inOrderValuesContainer = append(inOrderValuesContainer,pair.Make(node.key,node.value))
+		inOrderValuesContainer = append(inOrderValuesContainer, pair.Make(node.key, node.value))
 	}
 	return inOrderValuesContainer
 }
 
 func (bst *BinarySearchTree[K, T]) Print() {
-	levelOrder:= bst.levelOrderTraversal()
-	for _,level := range levelOrder{
-		for _,node:= range level{
-			fmt.Print(node.key," ")
+	levelOrder := bst.levelOrderTraversal()
+	for _, level := range levelOrder {
+		for _, node := range level {
+			fmt.Print(node.key, " ")
 		}
 		fmt.Println()
 	}
