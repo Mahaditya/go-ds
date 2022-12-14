@@ -2,6 +2,7 @@ package hashmap
 
 import (
 	"fmt"
+	"go-ds/src/dstructs/pair"
 	"go-ds/src/dstructs/vector"
 )
 
@@ -54,7 +55,7 @@ func (hs *HashMap[T, U]) Update(key T, f func(U) U) *HashMap[T, U] {
 	return hs
 }
 
-func (hs *HashMap[T, U]) Keys(key T, f func(U) U) vector.Vector[T] {
+func (hs *HashMap[T, U]) Keys() vector.Vector[T] {
 	var keys vector.Vector[T]
 	hs.ForEach(func(key T, value U) {
 		keys.Push(key)
@@ -62,13 +63,22 @@ func (hs *HashMap[T, U]) Keys(key T, f func(U) U) vector.Vector[T] {
 	return keys
 }
 
-func (hs *HashMap[T, U]) Values(key T, f func(U) U) vector.Vector[U] {
+func (hs *HashMap[T, U]) Values() vector.Vector[U] {
 	var values vector.Vector[U]
 	hs.ForEach(func(key T, value U) {
 		values.Push(value)
 	})
 	return values
 }
+
+func (hs *HashMap[T, U]) Entries() vector.Vector[pair.Pair[T,U]] {
+	var entries vector.Vector[pair.Pair[T,U]]
+	hs.ForEach(func(key T, value U) {
+		entries.Push(pair.Make(key,value))
+	})
+	return entries
+}
+
 
 func (hs HashMap[T, U]) String() string {
 	return fmt.Sprintf("%v", hs.data)
