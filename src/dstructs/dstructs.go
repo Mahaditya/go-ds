@@ -35,6 +35,15 @@ type Searchable[T any] interface {
 	Contains(T) bool
 }
 
+type Iterator[T any] interface {
+	HasNext() bool
+	GetNext() (T,error)
+}
+type Iterable[T any] interface {
+	Sizeable
+	GetIterator() Iterator[T]
+}
+
 type Stack[T any] interface {
 	Popable[T]
 	Pushable[T]
@@ -55,5 +64,6 @@ type Vector[T any] interface {
 	Indexable[T]
 	EndAccessible[T]
 	Searchable[T]
+	Iterable[T]
 	Sizeable
 }

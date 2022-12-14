@@ -3,6 +3,7 @@ package vector
 import (
 	"errors"
 	"fmt"
+	"go-ds/src/dstructs"
 )
 
 type Vector[T any] struct {
@@ -100,4 +101,8 @@ func (v Vector[T]) String() string {
 
 func (v Vector[T]) ToString() string {
 	return fmt.Sprintf("%v", v.data)
+}
+
+func (v *Vector[T]) GetIterator() dstructs.Iterator[T] {
+	return &vectorIterator[T]{0,v}
 }
