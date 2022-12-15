@@ -3,6 +3,7 @@ package sll
 import (
 	"errors"
 	"fmt"
+	"go-ds/src/dstructs"
 )
 
 type SinglyLinkedList[T any] struct {
@@ -80,6 +81,18 @@ func (sl *SinglyLinkedList[T]) At(idx int) (T, error) {
 	}
 	return *new(T), errors.New("index out of bounds")
 }
+
+func (sl *SinglyLinkedList[T]) GetIterator() dstructs.Iterator[T] {
+	return &sllIterator[T]{0,sl.GetHead(),sl}
+}
+
+func (sl *SinglyLinkedList[T]) IsEmpty() bool {
+	return sl.size > 0
+}
+func (sl *SinglyLinkedList[T]) IsNotEmpty() bool {
+	return !sl.IsEmpty()
+}
+
 
 func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 	if sl.size == 0 {
