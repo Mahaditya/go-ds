@@ -104,5 +104,5 @@ func (v Vector[T]) ToString() string {
 }
 
 func (v *Vector[T]) GetIterator() dstructs.Iterator[T] {
-	return &vectorIterator[T]{0,v}
+	return &vectorIterator[T]{0, v}
 }

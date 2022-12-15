@@ -21,7 +21,7 @@ func (sli *sllIterator[T]) GetNext() (T, error) {
 			return *new(T), err
 		} else {
 			sli.index++
-			sli.currentNode,_ = getNext(sli.currentNode)
+			sli.currentNode, _ = getNext(sli.currentNode)
 			return currVal, err
 		}
 	}

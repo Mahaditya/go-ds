@@ -3,21 +3,19 @@ package main
 import (
 	"fmt"
 	"go-ds/src/dstructs"
-	"go-ds/src/dstructs/vector"
+	"go-ds/src/dstructs/sll"
 )
 
-func call(v dstructs.Iterable[int]){
-	it:= v.GetIterator()
+func call(v dstructs.Iterable[int]) {
+	it := v.GetIterator()
 	for it.HasNext() {
 		fmt.Println(it.GetNext())
 	}
 }
 
-
 func main() {
-	var v vector.Vector[int]
-	v.Push(1)
-	v.Push(2)
-	v.Push(3)
-	call(&v)
+	sl := sll.Make(1)
+	sl.AddLast(7)
+	sl.AddFirst(5)
+	call(sl)
 }

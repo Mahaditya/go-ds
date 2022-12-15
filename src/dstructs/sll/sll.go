@@ -83,7 +83,7 @@ func (sl *SinglyLinkedList[T]) At(idx int) (T, error) {
 }
 
 func (sl *SinglyLinkedList[T]) GetIterator() dstructs.Iterator[T] {
-	return &sllIterator[T]{0,sl.GetHead(),sl}
+	return &sllIterator[T]{0, sl.GetHead(), sl}
 }
 
 func (sl *SinglyLinkedList[T]) IsEmpty() bool {
@@ -92,7 +92,6 @@ func (sl *SinglyLinkedList[T]) IsEmpty() bool {
 func (sl *SinglyLinkedList[T]) IsNotEmpty() bool {
 	return !sl.IsEmpty()
 }
-
 
 func (sl SinglyLinkedList[T]) Format(f fmt.State, verb rune) {
 	if sl.size == 0 {

@@ -37,7 +37,7 @@ type Searchable[T any] interface {
 
 type Iterator[T any] interface {
 	HasNext() bool
-	GetNext() (T,error)
+	GetNext() (T, error)
 }
 type Iterable[T any] interface {
 	Sizeable

@@ -71,14 +71,13 @@ func (hs *HashMap[T, U]) Values() vector.Vector[U] {
 	return values
 }
 
-func (hs *HashMap[T, U]) Entries() vector.Vector[pair.Pair[T,U]] {
-	var entries vector.Vector[pair.Pair[T,U]]
+func (hs *HashMap[T, U]) Entries() vector.Vector[pair.Pair[T, U]] {
+	var entries vector.Vector[pair.Pair[T, U]]
 	hs.ForEach(func(key T, value U) {
-		entries.Push(pair.Make(key,value))
+		entries.Push(pair.Make(key, value))
 	})
 	return entries
 }
-
 
 func (hs HashMap[T, U]) String() string {
 	return fmt.Sprintf("%v", hs.data)
