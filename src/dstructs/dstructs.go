@@ -67,3 +67,11 @@ type Vector[T any] interface {
 	Iterable[T]
 	Sizeable
 }
+
+
+type SinglyLinkedList[T any] interface {
+	Sizeable
+	Pushable[T]
+	Indexable[T]
+	Popable[T]
+}

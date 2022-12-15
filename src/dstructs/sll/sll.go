@@ -24,7 +24,7 @@ func (sl *SinglyLinkedList[T]) AddFirst(element T) {
 	sl.addBefore(element, sl.head)
 }
 
-func (sl *SinglyLinkedList[T]) AddLast(element T) {
+func (sl *SinglyLinkedList[T]) Push(element T) {
 	sl.addAfter(element, sl.tail)
 }
 
