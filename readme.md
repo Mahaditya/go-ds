@@ -2,6 +2,13 @@
 
 The goal of this project is to implement all major data structures in go to facilitate development. 
 
+## Major Features:
+
+- Complete Generic Support 🚀
+- All major Data Structures ✅
+- Supports Polymorphism through Interfaces 🟡🟢🟠
+- Pretty Printing by default for better visualization `<Vector [1 2]`
+
 
 ### Vector
 
