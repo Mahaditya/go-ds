@@ -10,63 +10,56 @@ The goal of this project is to implement all major data structures in go to faci
 - Pretty Printing by default for better visualization `<Vector [1 2]>`
 
 
+
+#### How to import
+
+```go
+import (
+	"go-ds/src/dstructs/vector"
+	"go-ds/src/dstructs/stack"
+)
+
+```
+
 ### Vector
 
 ```go
-package main
+var vect vector.Vector[string]
+vect.Push("alpha")
+vect.Push("beta")
+fmt.Println(arr) // <Vector [alpha beta]>
 
-import (
-	"fmt"
-	"go-ds/src/dstructs/vector"
-)
+var vectInt vector.Vector[int]
 
-func main() {
-	var arr vector.Vector[string]
-	arr.Push("alpha")
-	arr.Push("beta")
-	fmt.Println(arr)
-}
+vectInt.Push(1)
+vectInt.push(99)
 
-> Output: <Vector [alpha beta]>
+fmt.Println(vectInt) // <Vector [1 99]>
+
+
 ```
 
 
 ### Stack 
 
 ```go
-package main
+var myStack stack.Stack[string]
 
-import (
-	"fmt"
-	"go-ds/src/dstructs/stack"
-)
+myStack.Push("alpha")
+myStack.Push("beta")
+myStack.Push("gamma")
 
-func main() {
-	var myStack stack.Stack[string]
+fmt.Println(myStack) // Stack [alpha beta gamma]<---
 
-	myStack.Push("alpha")
-	myStack.Push("beta")
-	myStack.Push("gamma")
+myStack.Pop()
 
-	fmt.Println(myStack)
+fmt.Println(myStack) // Stack [alpha beta]<---
 
-	myStack.Pop()
-
-	fmt.Println(myStack)
-
-	if top,err:= myStack.Top(); err!=nil{
-		fmt.Println(err)
-	}else{
-		fmt.Println(top)
-	}
-	
+if top,err:= myStack.Top(); err!=nil{
+  fmt.Println(err)
+}else{
+  fmt.Println(top) // beta
 }
-
-> Output: 
-
-Stack [alpha beta gamma]<---
-Stack [alpha beta]<---
-beta
 
 ```
 
@@ -74,27 +67,19 @@ beta
 
 ```go
 
-import (
-	"fmt"
-	"go-ds/src/dstructs/pair"
-	"go-ds/src/dstructs/stack"
-)
+catPair:= pair.Make("Cat",4)
+fmt.Println(catPair) //> {Cat 4}
 
-func main() {
-	catPair:= pair.Make("Cat",4)
-	fmt.Println(catPair) //> {Cat 4}
+birdPair:= pair.Make("Bird",2)
+fmt.Println(birdPair) //> {Bird 2}
 
-	birdPair:= pair.Make("Bird",2)
-	fmt.Println(birdPair) //> {Bird 2}
+var myStack stack.Stack[pair.Pair[string,int]]
+myStack.Push(catPair)
+myStack.Push(birdPair)
+fmt.Println(myStack)  //> Stack [{Cat 4} {Bird 2}]<---
 
-	var myStack stack.Stack[pair.Pair[string,int]]
-	myStack.Push(catPair)
-	myStack.Push(birdPair)
-	fmt.Println(myStack)  //> Stack [{Cat 4} {Bird 2}]<---
-
-	if topPair,err:= myStack.Top(); err==nil{
-		fmt.Println("TopPair",topPair) //> TopPair {Bird 2}
-	}
+if topPair,err:= myStack.Top(); err==nil{
+  fmt.Println("TopPair",topPair) //> TopPair {Bird 2}
 }
 
 ```
