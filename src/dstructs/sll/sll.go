@@ -48,10 +48,12 @@ func (sl *SinglyLinkedList[T]) Remove(node *lLNode[T]) error {
 	prevNode := sl.getPrev(node)
 	if prevNode != nil {
 		prevNode.next = node.next
+		sl.size--
 		return nil
 	}
 	if node == sl.head {
 		sl.head = node.next
+		sl.size--
 		return nil
 	}
 	return errors.New("node not found")

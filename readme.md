@@ -6,7 +6,7 @@ The goal of this project is to implement all major data structures in go to faci
 
 - Complete Generic Support 🚀
 - All major Data Structures ✅
-- Supports Polymorphism through Interfaces 🟡🟢🟠
+- Supports Polymorphism through Interfaces 🟨 🔷
 - Pretty Printing by default for better visualization `<Vector [1 2]>`
 
 

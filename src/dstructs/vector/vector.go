@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"go-ds/src/dstructs"
+	"reflect"
 )
 
 type Vector[T any] struct {
@@ -105,4 +106,18 @@ func (v Vector[T]) ToString() string {
 
 func (v *Vector[T]) GetIterator() dstructs.Iterator[T] {
 	return &vectorIterator[T]{0, v}
+}
+
+func (v *Vector[T]) Contains(element T) bool {
+	_, present := v.Find(element)
+	return present
+}
+
+func (v *Vector[T]) Find(element T) (index int, present bool) {
+	for idx, val := range v.data {
+		if reflect.DeepEqual(element, val) {
+			return idx, true
+		}
+	}
+	return -1, false
 }

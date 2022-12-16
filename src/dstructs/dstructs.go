@@ -33,6 +33,7 @@ type EndAccessible[T any] interface {
 
 type Searchable[T any] interface {
 	Contains(T) bool
+	Find(T) (index int, present bool)
 }
 
 type Iterator[T any] interface {
@@ -42,6 +43,10 @@ type Iterator[T any] interface {
 type Iterable[T any] interface {
 	Sizeable
 	GetIterator() Iterator[T]
+}
+
+type FrontPopable[T any] interface {
+	PopFront() (T, error)
 }
 
 type Stack[T any] interface {
@@ -65,9 +70,9 @@ type Vector[T any] interface {
 	EndAccessible[T]
 	Searchable[T]
 	Iterable[T]
+	FrontPopable[T]
 	Sizeable
 }
-
 
 type SinglyLinkedList[T any] interface {
 	Sizeable

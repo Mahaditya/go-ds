@@ -2,7 +2,6 @@ package sll
 
 import (
 	"errors"
-	"fmt"
 )
 
 type sllIterator[T any] struct {
@@ -25,6 +24,5 @@ func (sli *sllIterator[T]) GetNext() (T, error) {
 			return currVal, err
 		}
 	}
-	fmt.Println("Doesn't have the elements")
 	return *new(T), errors.New("no next element")
 }
