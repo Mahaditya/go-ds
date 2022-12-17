@@ -34,7 +34,7 @@ func (v *Vector[T]) IsNotEmpty() bool {
 }
 
 func (v *Vector[T]) Pop() (T, error) {
-	val, err := v.Last()
+	val, err := v.Back()
 	if err == nil {
 		v.data = v.data[:v.Size()-1]
 	}
@@ -48,16 +48,16 @@ func (v *Vector[T]) At(index int) (T, error) {
 	return v.data[index], nil
 }
 
-func (v *Vector[T]) Last() (T, error) {
+func (v *Vector[T]) Back() (T, error) {
 	return v.At(v.Size() - 1)
 }
 
-func (v *Vector[T]) First() (T, error) {
+func (v *Vector[T]) Front() (T, error) {
 	return v.At(0)
 }
 
 func (v *Vector[T]) PopFront() (T, error) {
-	val, err := v.First()
+	val, err := v.Front()
 	if err == nil {
 		v.data = v.data[1:]
 	}

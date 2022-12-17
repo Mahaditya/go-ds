@@ -18,7 +18,7 @@ func (q *Queue[T]) Push(element T) {
 }
 
 func (q *Queue[T]) Front() (T, error) {
-	return q.data.First()
+	return q.data.Front()
 }
 
 func (q *Queue[T]) Pop() (T, error) {

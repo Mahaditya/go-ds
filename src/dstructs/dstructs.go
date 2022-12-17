@@ -22,13 +22,12 @@ type TopPeekable[T any] interface {
 	Top() (T, error)
 }
 
-type FrontPeekable[T any] interface {
+type FrontAccessible[T any] interface {
 	Front() (T, error)
 }
 
-type EndAccessible[T any] interface {
-	First() (T, error)
-	Last() (T, error)
+type BackAccessible[T any] interface {
+	Back() (T, error)
 }
 
 type Searchable[T any] interface {
@@ -59,7 +58,7 @@ type Stack[T any] interface {
 type Queue[T any] interface {
 	Popable[T]
 	Pushable[T]
-	FrontPeekable[T]
+	FrontAccessible[T]
 	Sizeable
 }
 
@@ -67,7 +66,8 @@ type Vector[T any] interface {
 	Popable[T]
 	Pushable[T]
 	Indexable[T]
-	EndAccessible[T]
+	FrontAccessible[T]
+	BackAccessible[T]
 	Searchable[T]
 	Iterable[T]
 	FrontPopable[T]

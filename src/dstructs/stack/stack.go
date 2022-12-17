@@ -18,7 +18,7 @@ func (st *Stack[T]) Pop() (T, error) {
 }
 
 func (st *Stack[T]) Top() (T, error) {
-	return st.data.Last()
+	return st.data.Back()
 }
 
 func (st *Stack[T]) Size() int {
