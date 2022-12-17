@@ -7,16 +7,20 @@ The goal of this project is to implement all major data structures in go to faci
 - Complete Generic Support 🚀
 - All major Data Structures ✅
 - Supports Polymorphism through Interfaces 🟨 🔷
-- Pretty Printing by default for better visualization `<Vector [1 2]>`
+- Pretty Printing by default `#0d1117` for better visualization `<Vector [1 2]>`
 
 
 ## Supported Data Structures
-- [Vector](#vector)
-- [Stack](#stack)
-- [Pair](#pair)
+- [___Vector___](#vector)
+- [___Stack___](#stack)
+- [___Pair___](#pair)
+- [___Queue___](#queue)
+- [___Hashset___](#hashset)
+- [___Hashmap___](#hashmap)
 
 
-#### How to import
+## Usage
+### Import
 
 ```go
 import (
@@ -94,15 +98,49 @@ if topPair,err:= myStack.Top(); err==nil{
 
 ```go
 
-	var q queue.Queue[int]
-	q.Push(1)
-	q.Push(2)
-	q.Push(3)
+var q queue.Queue[int]
+q.Push(1)
+q.Push(2)
+q.Push(3)
 
-	fmt.Println(q) // Queue --->[1 2 3]
+fmt.Println(q) // Queue --->[1 2 3]
 
-	q.Pop()
+q.Pop()
 
-	fmt.Println(q) // Queue --->[2 3]
+fmt.Println(q) // Queue --->[2 3]
+
+```
+
+### Hashset
+
+```go
+var mySet hashset.HashSet[string]
+
+mySet.Insert("alpha")
+mySet.Insert("beta")
+mySet.Insert("gamma")
+mySet.Insert("delta")
+
+fmt.Println(mySet) // { alpha beta gamma delta }
+
+mySet.Remove("beta")
+
+fmt.Println(mySet) // { alpha gamma delta }
+
+```
+
+
+### Hashmap
+
+```go
+var myMap hashmap.HashMap[int,int]
+
+vect:= vector.From([]int{1,2,1,1,2,6})
+
+vect.ForEach(func(val int) {
+  myMap.Update(val,func(i int) int {return i+1})
+})
+
+fmt.Println(myMap) // map[1:3 2:2 6:1]
 
 ```

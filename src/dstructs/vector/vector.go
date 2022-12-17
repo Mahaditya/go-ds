@@ -121,3 +121,9 @@ func (v *Vector[T]) Find(element T) (index int, present bool) {
 	}
 	return -1, false
 }
+
+func (v *Vector[T]) ForEach(f func(T)){
+	for _,val:= range v.data{
+		f(val)
+	}
+}
