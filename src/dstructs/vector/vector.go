@@ -11,8 +11,14 @@ type Vector[T any] struct {
 	data []T
 }
 
-func From[T any](slice []T) Vector[T] {
+func FromSlice[T any](slice []T) Vector[T] {
 	v := new(Vector[T])
+	v.data = slice
+	return *v
+}
+
+func From[T any](slice ...T) Vector[T] {
+	v:= new(Vector[T])
 	v.data = slice
 	return *v
 }
@@ -48,6 +54,13 @@ func (v *Vector[T]) At(index int) (T, error) {
 	return v.data[index], nil
 }
 
+func (v *Vector[T]) Ac(index int) *T {
+	if index < 0 || index >= v.Size() {
+		return new(T)
+	}
+	return &v.data[index]
+}
+
 func (v *Vector[T]) Back() (T, error) {
 	return v.At(v.Size() - 1)
 }
@@ -77,7 +90,7 @@ func (v Vector[T]) SubVector(startIndex int, endIndex int) (Vector[T], error) {
 	_, err2 := v.At(endIndex)
 
 	if err == nil && err2 == nil {
-		return From(v.data[startIndex:endIndex]), nil
+		return FromSlice(v.data[startIndex:endIndex]), nil
 	}
 
 	if err != nil {
@@ -120,9 +133,15 @@ func (v *Vector[T]) ForEach(f func(T)){
 	}
 }
 
-func Make[T any](size int) Vector[T]{
+func Make[T any](size int,initializer ...T) Vector[T]{
 	slc := make([]T,size)
-	return From(slc)
+	if len(initializer)>0 {
+		for idx := range slc{
+			slc[idx] = initializer[0]
+		}	
+		return FromSlice(slc)
+	}
+	return FromSlice(slc)
 }
 
 func (v *Vector[T]) Replace(idx int,val T) bool {
@@ -131,4 +150,8 @@ func (v *Vector[T]) Replace(idx int,val T) bool {
 	}
 	v.data[idx] = val
 	return true
+}
+
+func (v *Vector[T]) ToSlice() []T{
+	return v.data
 }

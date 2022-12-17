@@ -9,7 +9,7 @@ import (
 
 func TestInterface(t *testing.T) {
 	var vect dstructs.Vector[int]
-	vectStruct := vector.From([]int{1, 3, 5})
+	vectStruct := vector.From(1, 3, 5)
 	vect = &vectStruct
 	fmt.Println(vect)
 }
