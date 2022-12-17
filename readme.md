@@ -41,7 +41,7 @@ fmt.Println(arr) // <Vector [alpha beta]>
 var vectInt vector.Vector[int]
 
 vectInt.Push(1)
-vectInt.push(99)
+vectInt.Push(99)
 
 fmt.Println(vectInt) // <Vector [1 99]>
 
