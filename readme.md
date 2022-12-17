@@ -10,6 +10,11 @@ The goal of this project is to implement all major data structures in go to faci
 - Pretty Printing by default for better visualization `<Vector [1 2]>`
 
 
+## Supported Data Structures
+- [Vector](#vector)
+- [Stack](#stack)
+- [Pair](#pair)
+
 
 #### How to import
 
@@ -81,5 +86,23 @@ fmt.Println(myStack)  //> Stack [{Cat 4} {Bird 2}]<---
 if topPair,err:= myStack.Top(); err==nil{
   fmt.Println("TopPair",topPair) //> TopPair {Bird 2}
 }
+
+```
+
+
+### Queue
+
+```go
+
+	var q queue.Queue[int]
+	q.Push(1)
+	q.Push(2)
+	q.Push(3)
+
+	fmt.Println(q) // Queue --->[1 2 3]
+
+	q.Pop()
+
+	fmt.Println(q) // Queue --->[2 3]
 
 ```
