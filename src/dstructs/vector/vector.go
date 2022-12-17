@@ -72,14 +72,6 @@ func Map[A, B any](vector Vector[A], f func(A) B) Vector[B] {
 	return *newVector
 }
 
-func (v *Vector[T]) Replace(index int, element T) (*Vector[T], error) {
-	_, err := v.At(index)
-	if err == nil {
-		v.data[index] = element
-	}
-	return v, err
-}
-
 func (v Vector[T]) SubVector(startIndex int, endIndex int) (Vector[T], error) {
 	_, err := v.At(startIndex)
 	_, err2 := v.At(endIndex)
@@ -126,4 +118,17 @@ func (v *Vector[T]) ForEach(f func(T)){
 	for _,val:= range v.data{
 		f(val)
 	}
+}
+
+func Make[T any](size int) Vector[T]{
+	slc := make([]T,size)
+	return From(slc)
+}
+
+func (v *Vector[T]) Replace(idx int,val T) bool {
+	if _,err:= v.At(idx); err!=nil{
+		return false
+	}
+	v.data[idx] = val
+	return true
 }
