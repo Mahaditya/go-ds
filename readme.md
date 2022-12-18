@@ -144,3 +144,16 @@ vect.ForEach(func(val int) {
 fmt.Println(myMap) // map[1:3 2:2 6:1]
 
 ```
+
+
+
+
+### Initializing a multidimensional vector
+
+```go
+// Initializing a 4x4 vector with the default value as -1
+
+dp:= vector.Make(4,vector.Make(4,-1))
+fmt.Println(dp) //<Vector [<Vector [-1 -1 -1 -1]> <Vector [-1 -1 -1 -1]> <Vector [-1 -1 -1 -1]> <Vector [-1 -1 -1 -1]>]>
+
+```
