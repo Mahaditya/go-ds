@@ -42,6 +42,14 @@ func (hs *HashMap[T, U]) Get(key T) (U, bool) {
 	return val, ok
 }
 
+func (hs *HashMap[T, U]) GetOrDefault(key T,defaultValue U) U {
+		val,ok := hs.data[key]
+		if !ok {
+			return defaultValue
+		}
+		return val
+}
+
 func (hs *HashMap[T, U]) Replace(key T, value U) *HashMap[T, U] {
 	containsKey := hs.ContainsKey(key)
 	if containsKey {
