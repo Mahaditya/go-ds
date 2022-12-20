@@ -10,6 +10,11 @@ type Indexable[T any] interface {
 	At(int) (T, error)
 }
 
+type ListIndexable[T any] interface {
+	Get(int) (T,error)
+	Set(int,T) error
+}
+
 type Popable[T any] interface {
 	Pop() (T, error)
 }
@@ -46,6 +51,50 @@ type Iterable[T any] interface {
 
 type FrontPopable[T any] interface {
 	PopFront() (T, error)
+}
+
+type Addable[T any] interface {
+	Add(T) bool
+	AddAll(Iterable[T]) bool
+}
+
+type Clearable[T any] interface {
+	Clear()
+}
+
+type Comparable[T any] interface {
+	Equals(any) bool
+}
+
+type Removable[T any] interface {
+	Remove(T) bool
+	RemoveIf(f func(T) bool) bool 
+}
+
+type ArrayConvertible[T any] interface{
+	ToArray() []T
+}
+
+type IndexAddable[T any] interface {
+	AddAt(int,T) error
+	AddAllAt(int,Iterable[T]) error
+}
+
+type Collection[T any] interface {
+	Addable[T]
+	Removable[T]
+	Comparable[T]
+	Clearable[T]
+	Iterable[T]
+	Searchable[T]
+	ArrayConvertible[T]
+	Sizeable
+}
+
+type List[T any] interface{
+	Collection[T]
+	IndexAddable[T]
+	ListIndexable[T]
 }
 
 type Stack[T any] interface {
