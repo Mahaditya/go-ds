@@ -80,6 +80,10 @@ type IndexAddable[T any] interface {
 	AddAllAt(int,Iterable[T]) error
 }
 
+type IndexRemoveable[T any] interface {
+	RemoveAt(int,T) error
+}
+
 type Collection[T any] interface {
 	Addable[T]
 	Removable[T]
@@ -93,8 +97,9 @@ type Collection[T any] interface {
 
 type List[T any] interface{
 	Collection[T]
-	IndexAddable[T]
 	ListIndexable[T]
+	IndexAddable[T]
+	IndexRemoveable[T]
 }
 
 type Stack[T any] interface {

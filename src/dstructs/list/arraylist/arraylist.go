@@ -125,6 +125,13 @@ func (al *ArrayList[T]) Remove(element T) bool {
 	al.data = al.data[:al.Size()-1]
 	return true
 }
+func (al *ArrayList[T]) RemoveAt(index int, element T) error {
+	if al.isValidIndex(index) {
+		return errIndexOutOfBounds
+	}
+	al.data = append(al.data[:index],al.data[index+1:]...)
+	return nil
+}
 
 func (al *ArrayList[T]) RemoveIf(f func(T)bool) bool {
 	var arr []T
