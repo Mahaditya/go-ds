@@ -59,8 +59,9 @@ func (sl *SinglyLinkedList[T]) Remove(node *lLNode[T]) error {
 	return errors.New("node not found")
 }
 
-func (sl *SinglyLinkedList[T]) Pop(node *lLNode[T]) error {
-	return sl.Remove(sl.GetTail())
+func (sl *SinglyLinkedList[T]) Pop() (T,error) {
+	tailVal:= sl.GetTail().val;
+	return tailVal,sl.Remove(sl.GetTail())
 }
 
 func (sl *SinglyLinkedList[T]) PopFront(node *lLNode[T]) error {
@@ -72,13 +73,11 @@ func (sl *SinglyLinkedList[T]) Size() int {
 }
 
 func (sl *SinglyLinkedList[T]) At(idx int) (T, error) {
-	i := 0
 	curr := sl.head
-	for curr != nil {
+	for i := 0;curr != nil;i++ {
 		if i == idx {
 			return curr.val, nil
 		}
-		i++
 		curr = curr.next
 	}
 	return *new(T), errors.New("index out of bounds")

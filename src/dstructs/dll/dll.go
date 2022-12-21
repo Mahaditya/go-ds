@@ -20,9 +20,11 @@ func (dl *DoublyLinkedList[T]) AddAfter(element T, node *dllNode[T]) error {
 	return dl.addAfter(element, node)
 }
 
-func (dl *DoublyLinkedList[T]) AddBefore(element T, node *dllNode[T]) error {
-	return dl.addBefore(element, node)
-}
+// func (dl *DoublyLinkedList[T]) AddBefore(element T, node *dllNode[T]) error {
+// 	return dl.addBefore(element, node)
+// }
+
+
 
 func (dl *DoublyLinkedList[T]) AddLast(element T) error {
 	return dl.addAfter(element, dl.GetTail())
@@ -40,7 +42,7 @@ func (sl *DoublyLinkedList[T]) ForEach(f func(node *dllNode[T])) {
 	}
 }
 
-func (sl *DoublyLinkedList[T]) ForEachRev(f func(node *dllNode[T])) {
+func (sl *DoublyLinkedList[T]) ForEachReverse(f func(node *dllNode[T])) {
 	currNode := sl.tail
 	for currNode != nil {
 		f(currNode)
